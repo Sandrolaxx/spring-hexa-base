@@ -1,5 +1,9 @@
 package com.aktie.hexabase.domain.port.outbound;
 
-//Utilizado no useCase para definir o funcionamento do adaptador de saída
+import com.aktie.hexabase.domain.entities.UserBO;
+
 public interface UserRepositoryPort {
+
+    void save(UserBO user);
+
 }
