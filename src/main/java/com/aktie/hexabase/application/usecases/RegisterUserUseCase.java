@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import com.aktie.hexabase.adapter.inbound.dto.CreateUserDTO;
 import com.aktie.hexabase.adapter.inbound.dto.UserDTO;
+import com.aktie.hexabase.application.mappers.UserMapper;
 import com.aktie.hexabase.domain.entities.UserBO;
 import com.aktie.hexabase.domain.port.inbound.RegisterUserUseCasePort;
 import com.aktie.hexabase.domain.port.outbound.UserRepositoryPort;
@@ -23,7 +24,7 @@ public class RegisterUserUseCase implements RegisterUserUseCasePort {
 
         userRepository.save(user);
 
-        return new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword());
+        return UserMapper.toDTO(user);
 
     }
 

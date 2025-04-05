@@ -127,29 +127,40 @@ Por outro lado:
 
 ## **🛠 Exemplo prático:**
 ### **Organização correta**
+
+A estrutura de pastas do projeto segue a arquitetura hexagonal com separações bem definidas. Abaixo está uma visualização expandida dos diretórios principais e seus subníveis:
+
 ```
-/src/main/java/com/example
- ├── application/
- │   ├── service/
- │   │   ├── UserService.java  <-- Orquestra chamadas do domínio e infraestrutura
- │   ├── dto/
- │   ├── event/
- │   ├── usecase/
- │
- ├── domain/
- │   ├── model/
- │   │   ├── User.java         <-- Entidade de domínio pura
- │   ├── port/
- │   │   ├── UserRepositoryPort.java <-- Apenas contrato, sem implementação
- │   ├── exception/
- │
- ├── infrastructure/
- │   ├── repository/
- │   │   ├── UserRepositoryAdapter.java <-- Implementação do repositório (JPA, Mongo, etc.)
- │   ├── controller/
- │   │   ├── UserController.java  <-- REST API (Adapter de Entrada)
- │   ├── config/
- │
+src/
+├── main/
+│   ├── java/com/aktie/
+│   │   ├── application/
+│   │   │   └── mappers/
+│   │   │       └── UserMapper.java
+│   │   │   └── service/
+│   │   │       └── UserService.java
+│   │   ├── domain/
+│   │   │   ├── model/
+│   │   │   │   └── User.java
+│   │   │   └── ports/
+│   │   │       └── UserRepositoryPort.java
+│   │   ├── infrastructure/
+│   │   │   ├── controller/
+│   │   │   │   └── UserController.java
+│   │   │   └── repository/
+│   │   │       ├── entity/
+│   │   │       │   └── UserEntity.java
+│   │   │       ├── mapper/
+│   │   │       │   └── UserEntityMapper.java
+│   │   │       └── adapter/
+│   │   │           └── UserRepositoryAdapter.java
+│   │   └── SpringHexaBaseApplication.java
+│   └── resources/
+│       ├── application.properties
+│       └── static/index.html
+└── test/
+    └── java/com/aktie/
+        └── SpringHexaBaseApplicationTests.java
 ```
 
 💡 **Dessa forma:**  
